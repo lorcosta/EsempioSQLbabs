@@ -34,7 +34,7 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wrong words" />
                </children>
             </HBox>
-            <TextArea fx:id="txtOutput" />
+            <TextArea fx:id="txtOutput" editable="false" />
             <HBox alignment="CENTER_RIGHT" spacing="10.0">
                <children>
                   <Text fx:id="txtNumberError" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" />
@@ -50,6 +50,9 @@
       </VBox>
    </center>
    <bottom>
-      <Text fx:id="txtTime" strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="BOTTOM_LEFT" />
+      <Text fx:id="txtTime" strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="BOTTOM_LEFT">
+         <BorderPane.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </BorderPane.margin></Text>
    </bottom>
 </BorderPane>

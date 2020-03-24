@@ -28,12 +28,13 @@ public class Dictionary {
 	/**
 	 * Esegue il controllo ortografico sul testo in input, riceve una lista<String>
 	 * di parole che devono essere controllate e restituisce una lista di {@link RichWord}
-	 * con il parametro booleano che rappresenta la correttezza.
+	 * con il parametro booleano che rappresenta la correttezza. Esegue la ricerca con
+	 * modalità lineare all'interno di una {@link LinkedList}
 	 * @param inputTextList
 	 * @return List<RichWord>
 	 */
 	public List<RichWord> spellCheckText(List<String> inputTextList){
-		List<RichWord> correzioni= new ArrayList<RichWord>();
+		List<RichWord> correzioni= new LinkedList<RichWord>();
 		for(String s: inputTextList) {
 			if(dictionary.contains(s))
 				correzioni.add(new RichWord(s,true));
@@ -41,5 +42,5 @@ public class Dictionary {
 				
 		}
 		return correzioni;
-	}
+	}	
 }
