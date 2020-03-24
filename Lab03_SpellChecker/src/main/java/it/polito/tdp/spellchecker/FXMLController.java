@@ -9,6 +9,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import com.sun.prism.paint.Color;
+
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -61,12 +64,16 @@ public class FXMLController{
     void doClearText(ActionEvent event) {
     	txtInput.clear();
     	txtOutput.clear();
+    	txtNumberError.setText("");
+    	txtTime.setText("");
     }
 
     @FXML
     void doSpellCheck(ActionEvent event) {
+    	int wrongWords=0;//conta le parole sbagliate
     	this.doChooseLanguage();
     	txtOutput.clear();
+    	long start = System.nanoTime();
     	//Prendere tutte le parole inserite e trasformarle in una lista
     	String inputText=txtInput.getText().replaceAll("\\p{P}", "").toLowerCase();
     	List<String> inputTextList=new ArrayList<String>();
@@ -78,9 +85,16 @@ public class FXMLController{
     	List<RichWord> correzioni = new ArrayList<RichWord>(d.spellCheckText(inputTextList));
     	//Mostrare le parole scorrette
     	for(RichWord w:correzioni) {
-    		if(!w.isCorretta())
+    		if(!w.isCorretta()) {
     			txtOutput.appendText(w.getParola()+"\n");
+    			wrongWords++;
+    		}
     	}
+    	//Mostrare quante parole sono state sbagliate    	
+    	txtNumberError.setText("The text contains "+wrongWords+" errors");
+    	//Definire il tempo di esecuzione dello spell check
+    	long time = System.nanoTime()-start;
+    	txtTime.setText("Spell check completed in "+(time*10^-9)+"seconds");
     }
 
     private void loadData() {
