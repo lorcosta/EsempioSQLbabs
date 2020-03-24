@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Dictionary {
-	HashSet<String> dictionary= new HashSet<String>();
+	List<String> dictionary= new LinkedList<String>();
 	/**
 	 * Carica il dizionario della lingua prescelta.
 	 * @param language
