@@ -4,7 +4,7 @@
 
 package it.polito.tdp.spellchecker;
 
-import it.polito.tdp.spellchecker.model.Dictionary;
+import it.polito.tdp.spellchecker.model.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +66,7 @@ public class FXMLController{
     @FXML
     void doSpellCheck(ActionEvent event) {
     	this.doChooseLanguage();
+    	txtOutput.clear();
     	//Prendere tutte le parole inserite e trasformarle in una lista
     	String inputText=txtInput.getText().replaceAll("\\p{P}", "").toLowerCase();
     	List<String> inputTextList=new ArrayList<String>();
@@ -73,10 +74,13 @@ public class FXMLController{
     		inputTextList.add(s);
     	}
     	//Passare le parole inserite al model per poterle controllare 
-    	d.spellCheckText(inputTextList);
     	//Ricevere la correzione delle parole
+    	List<RichWord> correzioni = new ArrayList<RichWord>(d.spellCheckText(inputTextList));
     	//Mostrare le parole scorrette
-  
+    	for(RichWord w:correzioni) {
+    		if(!w.isCorretta())
+    			txtOutput.appendText(w.getParola()+"\n");
+    	}
     }
 
     private void loadData() {

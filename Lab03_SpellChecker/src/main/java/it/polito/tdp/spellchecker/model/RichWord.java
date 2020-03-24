@@ -8,6 +8,14 @@ public class RichWord {
 		this.parola = parola;
 		this.corretta = corretta;
 	}
+
+	public String getParola() {
+		return parola;
+	}
+
+	public boolean isCorretta() {
+		return corretta;
+	}
 	
 
 }
