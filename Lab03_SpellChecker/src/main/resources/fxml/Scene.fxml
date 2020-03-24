@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="378.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="378.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.spellchecker.FXMLController">
    <top>
       <Label text="Lab03_SpellChecker" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -24,7 +24,7 @@
             <HBox spacing="10.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose the language:" />
-                  <ChoiceBox fx:id="boxChoice" />
+                  <ChoiceBox fx:id="choiceDictionary" prefWidth="150.0" />
                </children>
             </HBox>
             <TextArea fx:id="txtInput" promptText="Type your text here..." />
