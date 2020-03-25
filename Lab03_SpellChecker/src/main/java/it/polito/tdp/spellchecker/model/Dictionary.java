@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Dictionary {
-	List<String> dictionary= new LinkedList<String>();
+	List<String> dictionary= new ArrayList<String>();
 	/**
 	 * Carica il dizionario della lingua prescelta.
 	 * @param language
@@ -36,11 +36,15 @@ public class Dictionary {
 	public List<RichWord> spellCheckText(List<String> inputTextList){
 		List<RichWord> correzioni= new LinkedList<RichWord>();
 		for(String s: inputTextList) {
-			if(dictionary.contains(s))
-				correzioni.add(new RichWord(s,true));
-			else correzioni.add(new RichWord(s,false));
-				
+			for(String word: dictionary) {
+				if(word.equals(s)) {
+					correzioni.add(new RichWord(s,true));
+					break;
+				}
+				correzioni.add(new RichWord(s,false));
+			}	
 		}
+		System.out.println(""+dictionary.size());
 		return correzioni;
-	}	
+	}
 }
