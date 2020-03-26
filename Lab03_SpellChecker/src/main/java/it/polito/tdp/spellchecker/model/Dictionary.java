@@ -36,15 +36,25 @@ public class Dictionary {
 	public List<RichWord> spellCheckText(List<String> inputTextList){
 		List<RichWord> correzioni= new LinkedList<RichWord>();
 		for(String s: inputTextList) {
+			//inizializzo la RichWord come falsa
+			RichWord correzioni_element=new RichWord(s,false);
+			//la aggiungo alla lista delle correzioni perchè in ogni caso dovrà essere aggiunta sia
+			//che sia corretta e sia che non lo sia
+			correzioni.add(correzioni_element);
 			for(String word: dictionary) {
-				if(word.equals(s)) {
-					correzioni.add(new RichWord(s,true));
+				if(word.equals(s)) {//se la parola inserita corrisponde ad una del dizionario allora la marco come corretta
+					correzioni_element.setCorretta(true);
+					//correzioni.add(new RichWord(s,true));
 					break;
 				}
-				correzioni.add(new RichWord(s,false));
+				// questo gli farebbe ritornare per ogni parola inserita dall'utente
+				// tante copie N quante sono le parole del dizionario, con solo 1 su N
+				// true nel caso in cui sia corretta. O tutte false se non appare mai.
+				// Cioè se hai 100 parole di vocabolario e 2 parole dell'utente avrai
+				// che correzioni contiene 2x100 parole. E' ridondande, non serve.
+				//-->correzioni.add(new RichWord(s,false));
 			}	
 		}
-		System.out.println(""+dictionary.size());
 		return correzioni;
 	}
 }

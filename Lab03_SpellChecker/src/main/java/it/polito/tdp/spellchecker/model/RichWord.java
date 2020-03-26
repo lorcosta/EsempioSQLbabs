@@ -16,6 +16,8 @@ public class RichWord {
 	public boolean isCorretta() {
 		return corretta;
 	}
-	
 
+	public void setCorretta(boolean corretta) {
+		this.corretta = corretta;
+	}
 }
