@@ -94,8 +94,7 @@ public class FXMLController{
     	txtNumberError.setText("The text contains "+wrongWords+" errors");
     	//Definire il tempo di esecuzione dello spell check
     	long time = System.nanoTime()-start;
-    	double t=time*1e-9;
-    	txtTime.setText("Spell check completed in "+(t)+"seconds");
+    	txtTime.setText("Spell check completed in "+(time)+"seconds");
     }
 
     private void loadData() {
