@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Dictionary {
-	List<String> dictionary= new ArrayList<String>();
+	Set<String> dictionary= new HashSet<String>();
 	/**
 	 * Carica il dizionario della lingua prescelta.
 	 * @param language
@@ -33,7 +33,7 @@ public class Dictionary {
 	 * @param inputTextList
 	 * @return List<RichWord>
 	 */
-	public List<RichWord> spellCheckText(List<String> inputTextList){
+	/*public List<RichWord> spellCheckText(List<String> inputTextList){
 		List<RichWord> correzioni= new LinkedList<RichWord>();
 		for(String s: inputTextList) {
 			//inizializzo la RichWord come falsa
@@ -53,6 +53,18 @@ public class Dictionary {
 				// Cioè se hai 100 parole di vocabolario e 2 parole dell'utente avrai
 				// che correzioni contiene 2x100 parole. E' ridondande, non serve.
 				//-->correzioni.add(new RichWord(s,false));
+			}	
+		}
+		return correzioni;
+	}*/
+	public List<RichWord> spellCheckText(List<String> inputTextList){
+		List<RichWord> correzioni= new LinkedList<RichWord>();
+		for(String s: inputTextList) {
+			RichWord correzioni_element=new RichWord(s,false);
+			correzioni.add(correzioni_element);
+				if(dictionary.contains(s)) {//se la parola inserita corrisponde ad una del dizionario allora la marco come corretta
+					correzioni_element.setCorretta(true);
+					break;
 			}	
 		}
 		return correzioni;
